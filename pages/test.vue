@@ -12,6 +12,9 @@
     <v-card-actions>
       <v-btn @click="hello">헬로우</v-btn>
     </v-card-actions>
+    <v-card-actions>
+      <v-btn @click="moment">플러그인</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -24,14 +27,17 @@ export default {
   },
   methods: {
     async test() {
-      this.text = '클릭했을때 변경된값: 테스트'
+      // this.text = '클릭했을때 변경된값: 테스트'
       const r = await this.$axios.get('/api')
       this.text = r.data
     },
     async hello() {
-      this.text = '클릭했을때 변경된값: 헬로우'
+      // this.text = '클릭했을때 변경된값: 헬로우'
       const r = await this.$axios.get('/api/hello')
       this.text = r.data
+    },
+    moment() {
+      this.text = this.$moment().toLocaleString()
     }
   }
 }
